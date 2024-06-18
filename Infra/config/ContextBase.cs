@@ -20,8 +20,7 @@ namespace Infra.config
 
         private string ObterStringConexao()
         {
-            return Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING")
-                   ?? throw new InvalidOperationException("Connection string is not set.");
+            return "Data Source=DESKTOP-4LE6SQB;Initial Catalog=DBSistemaWpp;Integrated Security=True;User ID=sa;Password=12345;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False; Application Intent=ReadWrite;Multi Subnet Failover=False";
         }
     }
 }
