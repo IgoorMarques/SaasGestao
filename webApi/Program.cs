@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Entities.Entidades;
 using Infra.config;
-using Domain.Interfaces.Generics;
 using Infra.repository.generics;
-using Domain.Interfaces.INomeModulo;
 using Infra.repository;
+using dominio.Interfaces.Generics;
+using dominio.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);

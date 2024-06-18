@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.INomeModulo;
+﻿using dominio.Interfaces;
 using Entities.Entidades;
 using Infra.repository.generics;
 using System;
