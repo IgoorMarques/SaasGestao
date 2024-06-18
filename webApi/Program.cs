@@ -11,6 +11,11 @@ using Infra.repository.generics;
 using Infra.repository;
 using dominio.Interfaces.Generics;
 using dominio.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using webApi.Token;
+using dominio.Interfaces.InterfaceServico;
+using dominio.Servicos;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +40,38 @@ builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositorioGene
 builder.Services.AddSingleton<InterfaceNomeModulo, RepositorioNomeModulo>();
 
 
+
+// SERVIÇO DOMINIO
+builder.Services.AddSingleton<INomeModuloServico, NomeModeloServico>();
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(option =>
+    {
+        option.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "Teste.Securiry.Bearer",
+            ValidAudience = "Teste.Securiry.Bearer",
+            IssuerSigningKey = JwtSecurityKey.Create("secret_key-12345678")
+        };
+        option.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                return Task.CompletedTask;
+            },
+            OnTokenValidated = context =>
+            {
+                Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                return Task.CompletedTask;
+            }
+        };
+    });
 
 
 var app = builder.Build();
