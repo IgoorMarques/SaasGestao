@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dominio.Interfaces.InterfaceServico
+namespace Domain.Servicos
 {
-    public interface INomeModuloServico
+    public class UsuarioServico
     {
     }
 }

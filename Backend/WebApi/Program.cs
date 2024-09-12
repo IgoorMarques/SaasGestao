@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using webApi.Token;
 using dominio.Interfaces.InterfaceServico;
-using dominio.Servicos;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,12 +36,12 @@ builder.Services.AddIdentity<Usuario, IdentityRole>(options => options.SignIn.Re
 
 // INTERFACE E REPOSITORIO
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositorioGeneric<>));
-builder.Services.AddSingleton<InterfaceNomeModulo, RepositorioNomeModulo>();
+//builder.Services.AddSingleton<InterfaceNomeModulo, RepositorioNomeModulo>();
 
 
 
 // SERVIÇO DOMINIO
-builder.Services.AddSingleton<INomeModuloServico, NomeModeloServico>();
+//builder.Services.AddSingleton<INomeModuloServico, NomeModeloServico>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

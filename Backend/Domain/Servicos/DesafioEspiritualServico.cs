@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Servicos
 {
-    public class AconselhamentoEspiritualServico
+    public class DesafioEspiritualServico
     {
-
     }
 }
